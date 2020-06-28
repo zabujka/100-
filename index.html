@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> 100%</title>
+    <link href="https://fonts.googleapis.com/css2?family=Monda&display=swap" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --light: 0.1;
+            --glow: 5px;
+        }
+        
+        html {
+            font-size: 10px;
+            font-family: "Monda", sans-serif;
+        }
+        body {
+            margin: 0;
+            height: 100vh;
+            background-image: url(human%20FOTO.webp);
+            background-size: cover;
+            background-position: bottom center;
+        }
+            
+        .night {
+            height: 100vh;
+            background-color: black;
+            opacity: calc(1 - var(--light)); 
+           /*zmienna*/
+            }
+        .neon {
+            font-size: 3rem;
+            color:#2C839D;
+            position: absolute;
+            left: 5%;
+            bottom: 5%;
+            letter-spacing: .8rem;
+            text-shadow: rgba(255, 255, 255, 0.8) 0 0 calc(5 * var(--glow)), #2C839D 0 0 var(--glow);
+            opacity: var(--light);
+        }
+        
+        .fa {
+            font-size: 8rem;
+            letter-spacing: .9rem;
+        }
+        input {
+            position: absolute;
+            width: 300px;
+            top: 20px;
+            left: 30px;
+            height: 80px;
+        }
+        @media (min-width: 1024px) {
+            html {
+                font-size: 20px;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+   <div class="night"> </div>
+   <div class="neon"><i class="fa fa-lightbulb-o" aria-hidden="true"></i><span>10</span>%</div>
+   <input type="range" name="neon" min="1" max="100" value="10">
+   
+    <script>
+     var input = document.querySelector("input");
+  input.addEventListener("change", updateValue);
+  input.addEventListener("mousemove", updateValue)
+
+        function updateValue() {
+        console.log(this.value);
+        var percent = document.querySelector('span')
+        percent.textContent = this.value;
+        document.documentElement.style.setProperty("--light", this.value / 100)
+        document.documentElement.style.setProperty("--glow", this.value / 4 + "px")
+        }
+       
+       
+    </script>
+</body>
+</html>
